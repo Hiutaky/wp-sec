@@ -1,4 +1,4 @@
-import { api, type ScanResponse } from "$/client";
+import { api, type ScanResponse } from "$/src/client";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Input } from "./ui/input";
@@ -55,7 +55,7 @@ export default function Scanner() {
                         )
                     : scanResponse && scanResponse.plugins.length > 0 ?
                         scanResponse.plugins.filter((p) => !p.slug.includes('netminds')).sort( (a, b ) => b.vulnerabilities.length - a.vulnerabilities.length ).map( (plugin, p) => 
-                            <div className="p-3 bg-black border rounded-sm flex flex-col gap-2">
+                            <div className="p-3 bg-black border rounded-sm flex flex-col gap-2" key={p}>
                                 <a href={plugin.url} target="blank">
                                     <span className="text-base font-medium" dangerouslySetInnerHTML={{ __html: plugin.name}}>
                                     </span>
@@ -78,7 +78,7 @@ export default function Scanner() {
                                             </DialogTrigger>
                                             <DialogContent>
                                                 <DialogHeader className="font-semibold">{plugin.name} - {plugin.version}</DialogHeader>
-                                                <div className="flex flex-col gap-3">
+                                                <div className="flex flex-col gap-3 max-h-[60vh] overflow-y-scroll">
                                                     {plugin.vulnerabilities.map( (vuln, v) => 
                                                         <div className="flex flex-col gap-2 p-3 border rounded-sm" key={v}>
                                                             <span
