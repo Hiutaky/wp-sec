@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./ui/dialog";
+// import { App } from "$/src/server";
 
 export default function Scanner() {
     const [loading, setLoading] = useState<boolean>(false);
@@ -11,6 +12,8 @@ export default function Scanner() {
     const [scanResponse, setScanResponse] = useState<ScanResponse>( 
         { plugins : [] }
     )
+
+
 
     async function scanTarget() {
         setLoading(true);

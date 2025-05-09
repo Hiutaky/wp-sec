@@ -4,8 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run server.ts",
-    "build": "cd frontend && bun run build && cd .. && bun build src/server.ts --outdir dist --target bun",
+    "dev": "bun run src/server.ts",
+    "build:frontend": "cd frontend && bun run build",
+    "build": "bun build src/server.ts --outdir dist --target bun",
     "serve": "NODE_ENV=production bun run dist/server.js"
   },
   "devDependencies": {
